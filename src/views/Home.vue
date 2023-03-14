@@ -6,6 +6,7 @@
 <script>
 import Tasks from '../components/Tasks.vue';
 import AddTask from '../components/AddTask.vue';
+
 export default {
     name: 'Home',
     props:{
@@ -24,7 +25,7 @@ export default {
 
     methods: {
   async addTask(task){
-    const res = await fetch('api/tasks', {
+    const res = await fetch('https://my-json-server.typicode.com/sanctogiacomo/tracker-app/tasks', {
       method: 'POST',
       headers:{
         'Content-type': 'application/json',
@@ -37,7 +38,7 @@ export default {
 
   async deleteTask(id){
     if(confirm('Are you sure?')){
-const res = await fetch(`api/tasks/${id}`,{
+const res = await fetch(`https://my-json-server.typicode.com/sanctogiacomo/tracker-app/tasks/${id}`,{
   method: 'DELETE'
 })
 res.status === 200 ? (this.tasks = this.tasks.filter((task) =>
@@ -49,7 +50,7 @@ res.status === 200 ? (this.tasks = this.tasks.filter((task) =>
   const taskToToggle = await this.fetchTask(id)
   const updateTask = {...taskToToggle, reminder:!taskToToggle.reminder}
 
-  const res = await fetch(`api/tasks/${id}`,{
+  const res = await fetch(`https://my-json-server.typicode.com/sanctogiacomo/tracker-app/tasks/${id}`,{
     method: 'PUT',
     headers: {
       'Content-type': 'application/json'
@@ -62,13 +63,13 @@ res.status === 200 ? (this.tasks = this.tasks.filter((task) =>
   },
 
   async fetchTasks(){
-  const res = await fetch('api/tasks')
+  const res = await fetch('https://my-json-server.typicode.com/sanctogiacomo/tracker-app/tasks')
   const data = await res.json();
   return data;
 },
 
  async fetchTask(id){
-  const res = await fetch(`api/tasks/${id}
+  const res = await fetch(`https://my-json-server.typicode.com/sanctogiacomo/tracker-app/tasks/${id}
   `)
   const data = await res.json();
   return data;

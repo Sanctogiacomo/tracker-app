@@ -2,7 +2,7 @@ module.exports = {
   devServer: {
     proxy: {
       '^/api': {
-        target: 'http://localhost:5000',
+        target: 'https://my-json-server.typicode.com/sanctogiacomo/tracker-app/tasks',
         changeOrigin: true,
         logLevel: 'debug',
         pathRewrite: { '^/api': '/' },

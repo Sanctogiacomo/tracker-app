@@ -28,7 +28,7 @@ methods: {
   toggleAddTask(){
   this.showAddTask = !this.showAddTask
   },
-},
+ },
 }  
 </script>
 
